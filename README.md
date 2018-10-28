@@ -43,7 +43,8 @@ You must also send `nwc.crt` to the client as part of the certificate chain, oth
 
 Alternatively, with Apache, you can add `SSLCertificateChainFile /path/to/nwc.crt` to your server config.
 
-Example: ```apache
+Example configuration:
+```apache
 <IfModule mod_ssl.c>
   <VirtualHost *:443>
     DocumentRoot /var/www/html

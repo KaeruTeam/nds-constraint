@@ -21,4 +21,5 @@ openssl x509 -req -in server.csr -CA nwc.crt -CAkey nwc.key -CAcreateserial -out
 ```
 
 Copy the server.key and server.crt files to the correct places, and then configure your server to use them.
+
 Additionally, add `SSLCertificateChainFile "nwc.crt"` to your server config.

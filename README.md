@@ -1,2 +1,2 @@
-# nds-constrain-t
-constrain't
+# nds-constrain't
+because Nintendo can't do SSL properly

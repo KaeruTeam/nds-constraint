@@ -1,5 +1,5 @@
 # nds-constrain't
-## Because Nintendo can't do SSL properly
+**Because Nintendo can't do SSL properly**
 
 # What is this?
 A way to sign SSL certificates such that the Nitro/TWL SDK's SSL library will treat as valid, without Nintendo's CA keys

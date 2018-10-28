@@ -10,7 +10,9 @@ Since we have some Nintendo signed certificates with private keys (client certs 
 
 # Requirements
 The Wii's client cert (nwc.crt and nwc.key in this repo)
+
 A server which supports SSLv3 (harder than it sounds lol)
+
 OpenSSL to generate the certs
 
 # How to make the certs?

@@ -3,7 +3,9 @@ Because Nintendo can't do SSL properly.
 
 # How does this work?
 The NDS SDK's SSL library supports something called "cert chains", which is a standard thing that all SSL libs should support.
+
 However, there is a fatal flaw in their implementation: they do not check if a cert is supposed to sign other certs or not (in other words: it doesn't check if it is a CA)
+
 Since we have some Nintendo signed certificates with private keys (client certs from the Wii), we can simply sign with those, and then return them from the server as part of the chain.
 
 # Requirements

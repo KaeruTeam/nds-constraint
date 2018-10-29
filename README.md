@@ -1,6 +1,12 @@
 # nds-constrain't
 **Because Nintendo can't do SSL properly**
 
+## Testing Server
+# tl;dr: If you only want to join the server, then here you go
+In order to join Kaeru Team's official server, you can use the following DNS settings:
+Primary: 178.62.43.212
+Secondary: 1.1.1.1 or 8.8.8.8
+
 # What is this?
 A way to sign SSL certificates such that the Nitro/TWL SDK's SSL library will treat as valid, without Nintendo's CA keys
 
@@ -57,8 +63,3 @@ Example configuration:
   </VirtualHost>
 </IfModule>
 ```
-
-## Testing Server
-In order to join Kaeru Team's official server, you can use the following DNS settings:
-Primary: 178.62.43.212
-Secondary: 1.1.1.1 or 8.8.8.8

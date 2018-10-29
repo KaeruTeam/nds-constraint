@@ -55,4 +55,10 @@ Example configuration:
     SSLCertificateKeyFile /path/to/server.key
     SSLCertificateChainFile /path/to/nwc.crt
   </VirtualHost>
-</IfModule>```
+</IfModule>
+```
+
+## Testing Server
+In order to join Kaeru Team's official server, you can use the following DNS settings:
+Primary: 178.62.43.212
+Secondary: 1.1.1.1 or 8.8.8.8

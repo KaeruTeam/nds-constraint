@@ -29,7 +29,7 @@ Nintendo consoles from the Wii onwards include a Nintendo-signed _client certifi
 
 # Instructions
 ## Requirements
-- The Wii's client certificate and its corresponding private key (these are not console-unique and can be pulled from any Wii, but are included here - `nwc.crt` and `nwc.key`.)
+- The Wii's client certificate and its corresponding private key (these are not console-unique and can be pulled from any Wii, a guide will come soon.)
 - A server which supports SSLv3 (may be somewhat difficult to set up as support for SSLv3 has been disabled/removed in most modern servers for security reasons... but it's all the DS supports)
 - OpenSSL, to sign the certificates (or other suitable tool)
 

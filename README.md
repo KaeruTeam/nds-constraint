@@ -2,22 +2,21 @@
 **Because Nintendo can't do SSL properly**
 
 ## Testing Server
-# tl;dr: If you only want to join the server, then here you go
-In order to join Kaeru Team's official server, you can use the following DNS settings:
-Primary: 178.62.43.212
-Secondary: 1.1.1.1 or 8.8.8.8
+**tl;dr: If you only want to join the test server**, then you can use the following DNS settings:
+ - Primary DNS: 178.62.43.212
+ - Secondary DNS: 1.1.1.1 or 8.8.8.8
 
-# What is this?
+## What is this?
 A way to sign SSL certificates such that the Nitro/TWL SDK's SSL library will treat as valid, without Nintendo's CA keys
 
-# Background information
+## Background information
 On Nintendo's consoles, online communications are carried out over various protocols but the predominant of these is HTTPS - HTTP carried within encrypted SSL packets.
 After some initial unencrypted handshake steps in which the two parties exchange version information and capabilities, SSL servers will present an SSL certificate to the client containing the server's public key.
 The client uses the server's public key to encrypt a shared secret that the server will decrypt with its private key.  This secret is used to protect a further key exchange step (e.g. Diffie-Hellman, although this can vary depending on the capabilities of each party) which will establish a new shared secret to be used to encrypt all further communications.
 Since SSL is a recognised web standard it is fairly simple for anyone competent to setup a compatible server - however, SSL certificates (and indeed X509 certificates in general) are almost always signed by a certifying authority so that the client knows it can trust the server it's connecting to.
 Unfortunately for us, the Nintendo SDK will refuse to connect to any server without a certificate signed by a trusted Nintendo CA, and Nintendo are of course not going to simply sign certificates for custom server authors to emulate theirs, leaving us unable to do anything without code patches... in theory.
 
-# The flaw
+## The flaw
 SSL certificate authorities can choose to add a flag to certificates they sign to state that this certificate is allowed to act as an intermediate CA too - that is, it can sign certificates. If the SSL server includes the intermediate CA's certificate with its own signed by that same intermediate, the client can follow the chain of trust back up to the root and will therefore accept the certificate.
 This, however, is where Nintendo's fatal flaw lies: in their implementation, they do not check if the intermediate certificate is supposed to sign other certs or not (indicated by a flag in the certificate's _basicConstraints_ section - `CA:TRUE` or `CA:FALSE`, as appropriate - leading to the name we gave this flaw), and as such if one has _any_ certificate signed by Nintendo with its accompanying private key, they can use it as an intermediate CA to sign their own certificates.
 
@@ -27,13 +26,13 @@ Nintendo consoles from the Wii onwards include a Nintendo-signed _client certifi
 
 **TL;DR: client certs can sign certs and the DS doesn't care!**
 
-# Instructions
-## Requirements
+## Instructions
+### Requirements
 - The Wii's client certificate and its corresponding private key (these are not console-unique and can be pulled from any Wii, a guide will come soon.)
 - A server which supports SSLv3 (may be somewhat difficult to set up as support for SSLv3 has been disabled/removed in most modern servers for security reasons... but it's all the DS supports)
 - OpenSSL, to sign the certificates (or other suitable tool)
 
-## Generating trusted certificates
+### Generating trusted certificates
 ```bash
 # Generate a 1024-bit private key for your server cert (weak, but it's a DS)
 openssl genrsa -out server.key 1024
